@@ -1,5 +1,21 @@
 {
     "require": {
         "phpunit/phpunit": "5.5.*"
+    },
+    "autoload": {
+        "psr-4": {
+            "Simcafe\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Simcafe\\Tests\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": [
+            "php vendor/bin/phpunit"
+        ]
     }
+
 }
