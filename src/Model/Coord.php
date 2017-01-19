@@ -13,4 +13,24 @@ class Coord implements ICoord
     $this->x = $x;
     $this->y = $y;
   }
+
+  public function incrementX() {
+    $this->x++;
+  }
+
+  public function incrementY() {
+    $this->y++;
+  }
+
+  public function decrementX() {
+    $this->x--;
+  }
+
+  public function decrementY() {
+    $this->y--;
+  }
+
+  public function __toString() {
+    return sprintf('%d %d', $this->x, $this->y);
+  }
 }

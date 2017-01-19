@@ -4,6 +4,8 @@ namespace Simcafe\Interfaces;
 
 interface ICoord
 {
-  // public function __construct(int $x, int $y);
-  // public function __tostring();
+  public function incrementX();
+  public function decrementX();
+  public function incrementY();
+  public function decrementY();
 }

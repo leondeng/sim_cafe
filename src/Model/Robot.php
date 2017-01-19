@@ -2,17 +2,68 @@
 
 namespace Simcafe\Model;
 
-use Simcafe\Interfaces\ICoord;
-use Simcafe\Interfaces\IDirection;
+use Simcafe\Interfaces\IRobot;
 
 class Robot implements IRobot
 {
-  const TURN_LEFT  = 'L';
-  const TURN_RIGHT = 'R';
-  const MOVE       = 'M';
+  private $coord;
+  private $dirction;
+  private $command;
 
-  public function __construct(ICoord $cord, IDirection $dirction) {
+  public function __construct(string $init, string $command) {
+    $inits = explode(' ', $init);
+    $this->coord = new Coord((int) $inits[0], (int) $inits[1]);
 
+    $this->direction = new Direction($inits[2]);
+
+    $this->command = new Command($command);
+  }
+
+  public function getCommand() {
+    return $this->command;
+  }
+
+  public function action() {
+    $action = $this->command->getAction();
+
+    if (! $action) {
+      return;
+    }
+
+    switch ($this->command->getAction()) {
+      case Command::LEFT:
+        $this->direction->turnLeft();
+        break;
+      case Command::RIGHT:
+        $this->direction->turnRight();
+        break;
+      case Command::MOVE:
+        $this->move();
+        break;
+    }
+  }
+
+  private function move() {
+    switch ((string) $this->direction) {
+      case Direction::North:
+        $this->coord->incrementY();
+        break;
+      case Direction::EAST:
+        $this->coord->incrementX();
+        break;
+      case Direction::SOUTH:
+        $this->coord->decrementY();
+        break;
+      case Direction::WEST:
+        $this->coord->decrementX();
+        break;
+    }
+
+    return $this;
+  }
+
+  public function __toString() {
+    return sprintf('%s %s', $this->coord, $this->direction);
   }
 
 } 
