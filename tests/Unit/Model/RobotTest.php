@@ -21,7 +21,11 @@ class RobotTest extends TestCase
     $command = 'LMLMLMLMM';
 
     $robot = new Robot($init, $command);
-    $this->assertEquals('1 2 W', (string) $robot->action());
+    $this->assertEquals('1 3 N', (string) $robot->action());
+    $this->assertEquals('1 3 N', (string) $robot->action());
+    $this->assertEquals('1 3 N', (string) $robot->action());
+    $this->assertEquals('1 3 N', (string) $robot->action());
+    $this->assertEquals('1 3 N', (string) $robot->action());
   }
 
 }

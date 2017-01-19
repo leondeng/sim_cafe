@@ -41,6 +41,8 @@ class Robot implements IRobot
         $this->move();
         break;
     }
+
+    return $this;
   }
 
   private function move() {
@@ -58,8 +60,6 @@ class Robot implements IRobot
         $this->coord->decrementX();
         break;
     }
-
-    return $this;
   }
 
   public function __toString() {
