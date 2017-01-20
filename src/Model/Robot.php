@@ -3,6 +3,9 @@
 namespace Simcafe\Model;
 
 use Simcafe\Interfaces\IRobot;
+use Simcafe\Interfaces\ICoord;
+use Simcafe\Interfaces\IDirection;
+use Simcafe\Interfaces\ICommand;
 
 class Robot implements IRobot
 {
@@ -10,13 +13,12 @@ class Robot implements IRobot
   private $dirction;
   private $command;
 
-  public function __construct(string $init, string $command) {
-    $inits = explode(' ', $init);
-    $this->coord = new Coord((int) $inits[0], (int) $inits[1]);
-
-    $this->direction = new Direction($inits[2]);
-
-    $this->command = new Command($command);
+  public function __construct(ICoord $coord,
+                              IDirection $direction,
+                              ICommand $command) {
+    $this->coord = $coord;
+    $this->direction = $direction;
+    $this->command = $command;
   }
 
   public function getCommand() {
@@ -24,12 +26,6 @@ class Robot implements IRobot
   }
 
   public function action() {
-    $action = $this->command->getAction();
-
-    if (! $action) {
-      return;
-    }
-
     switch ($this->command->getAction()) {
       case Command::LEFT:
         $this->direction->turnLeft();
@@ -47,7 +43,7 @@ class Robot implements IRobot
 
   private function move() {
     switch ((string) $this->direction) {
-      case Direction::North:
+      case Direction::NORTH:
         $this->coord->incrementY();
         break;
       case Direction::EAST:

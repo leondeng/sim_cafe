@@ -6,22 +6,22 @@ use Simcafe\Interfaces\IDirection;
 
 class Direction implements IDirection
 {
-  const North = 'N';
-  const East  = 'E';
-  const South = 'S';
-  const West  = 'W';
+  const NORTH = 'N';
+  const EAST  = 'E';
+  const SOUTH = 'S';
+  const WEST  = 'W';
 
-  const Directions = [
-    self::North => 1,
-    self::East => 2,
-    self::South => 3,
-    self::West => 4
+  const DIRECTIONS = [
+    self::NORTH => 1,
+    self::EAST => 2,
+    self::SOUTH => 3,
+    self::WEST => 4
   ];
 
   private $direction;
 
   public function __construct($dir) {
-    if (!array_key_exists($dir, self::Directions)) {
+    if (!array_key_exists($dir, self::DIRECTIONS)) {
       throw new \UnexpectedValueException(" Invalid direction {$dir}!");
     }
     
@@ -29,14 +29,14 @@ class Direction implements IDirection
   }
 
   public function turnLeft() {
-    $next = (self::Directions[$this->direction] - 1) ?: 4;
-    $this->direction = array_flip(self::Directions)[$next];
+    $next = (self::DIRECTIONS[$this->direction] - 1) ?: 4;
+    $this->direction = array_flip(self::DIRECTIONS)[$next];
   }
 
   public function turnRight() {
-    $next = self::Directions[$this->direction] + 1;
-    $next = $next > 4 ? 0 : $next;
-    $this->direction = array_flip(self::Directions)[$next];
+    $next = self::DIRECTIONS[$this->direction] + 1;
+    $next = $next > 4 ? 1 : $next;
+    $this->direction = array_flip(self::DIRECTIONS)[$next];
   }
 
   public function __toString() {
