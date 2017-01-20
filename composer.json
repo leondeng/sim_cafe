@@ -17,7 +17,7 @@
             "php vendor/bin/phpunit"
         ],
         "test:coverage": [
-            "php vendor/bin/phpunit --coverage-html tests/report"
+            "php vendor/bin/phpunit --coverage-clover=coverage.xml"
         ]
     }
 
