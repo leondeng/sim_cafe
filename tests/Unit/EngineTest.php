@@ -42,6 +42,10 @@ class EngineTest extends TestCase
     ]
   ];
 
+  private $engine;
+
+  private $shop;
+
   public function test_init() {
     $engine = $this->getEngine();
 

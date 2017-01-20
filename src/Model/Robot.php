@@ -9,11 +9,11 @@ use Simcafe\Interfaces\ICommand;
 
 class Robot implements IRobot
 {
-  private $coord;
-  private $direction;
-  private $command;
+  protected $coord;
+  protected $direction;
+  protected $command;
 
-  private $done = false;
+  protected $done = false;
 
   public function __construct(ICoord $coord,
                               IDirection $direction,
@@ -51,7 +51,7 @@ class Robot implements IRobot
     return $this;
   }
 
-  private function move() {
+  protected function move() {
     switch ((string) $this->direction) {
       case Direction::NORTH:
         $this->coord->incrementY();

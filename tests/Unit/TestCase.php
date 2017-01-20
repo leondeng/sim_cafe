@@ -50,10 +50,6 @@ class TestCase extends PHPUnit_Framework_TestCase
 
   protected $robots = [];
 
-  protected $shop;
-
-  protected $engine;
-
   protected function getRobots() {
     if (empty($this->robots)) {
       foreach (self::FIXTURES as $index => $fixture) {

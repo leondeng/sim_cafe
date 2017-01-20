@@ -3,6 +3,7 @@
 namespace Simcafe\Model;
 
 use Simcafe\Interfaces\ICoord;
+use Simcafe\Exception\NegativestepException;
 
 class Coord implements ICoord
 {
@@ -23,10 +24,18 @@ class Coord implements ICoord
   }
 
   public function decrementX() {
+    if ($this->x - 1 < 0) {
+      throw new NegativestepException('Coord x negative!');
+    }
+
     $this->x--;
   }
 
   public function decrementY() {
+    if ($this->y - 1 < 0) {
+      throw new NegativestepException('Coord y negative!');
+    }
+
     $this->y--;
   }
 
