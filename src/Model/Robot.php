@@ -10,7 +10,7 @@ use Simcafe\Interfaces\ICommand;
 class Robot implements IRobot
 {
   private $coord;
-  private $dirction;
+  private $direction;
   private $command;
 
   private $done = false;
