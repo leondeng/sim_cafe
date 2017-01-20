@@ -1,6 +1,6 @@
 <?php
 
-namespace Simcafe\Tests\Unit\Model;
+namespace Simcafe\Tests\Unit;
 
 use Simcafe\Tests\Unit\TestCase;
 use Simcafe\Model\Direction;

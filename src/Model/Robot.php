@@ -13,6 +13,8 @@ class Robot implements IRobot
   private $dirction;
   private $command;
 
+  private $done = false;
+
   public function __construct(ICoord $coord,
                               IDirection $direction,
                               ICommand $command) {
@@ -26,6 +28,10 @@ class Robot implements IRobot
   }
 
   public function action() {
+    if ($this->done) {
+      return $this;
+    }
+
     switch ($this->command->getAction()) {
       case Command::LEFT:
         $this->direction->turnLeft();
@@ -36,6 +42,10 @@ class Robot implements IRobot
       case Command::MOVE:
         $this->move();
         break;
+    }
+
+    if (! $this->command->next()) {
+      $this->done = true;
     }
 
     return $this;
@@ -56,6 +66,18 @@ class Robot implements IRobot
         $this->coord->decrementX();
         break;
     }
+  }
+
+  public function isDone() {
+    return $this->done;
+  }
+
+  public function getCoord() {
+    return $this->coord;
+  }
+
+  public function getDirection() {
+    return $this->direction;
   }
 
   public function __toString() {

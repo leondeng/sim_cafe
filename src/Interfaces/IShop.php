@@ -4,5 +4,6 @@ namespace Simcafe\Interfaces;
 
 interface IShop
 {
-  public function __construct();
+  public function getWidth();
+  public function getLength();
 }

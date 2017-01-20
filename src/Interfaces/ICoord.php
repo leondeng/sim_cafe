@@ -8,4 +8,6 @@ interface ICoord
   public function decrementX();
   public function incrementY();
   public function decrementY();
+  public function getX();
+  public function getY();
 }

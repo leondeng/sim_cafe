@@ -1,6 +1,6 @@
 <?php
 
-namespace Simcafe\Tests\Unit\Model;
+namespace Simcafe\Tests\Unit;
 
 use Simcafe\Tests\Unit\TestCase;
 use Simcafe\Model\Command;
@@ -28,8 +28,10 @@ class CommandTest extends TestCase
 
     foreach (str_split($input) as $action) {
       $this->assertEquals($action, $command->getAction());
+      $command->next();
     }
 
-    $this->assertFalse($command->getAction());    
+    $this->assertFalse($command->next());
+    $this->assertFalse($command->getAction());
   }
 }

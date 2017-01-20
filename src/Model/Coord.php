@@ -30,6 +30,14 @@ class Coord implements ICoord
     $this->y--;
   }
 
+  public function getX() {
+    return $this->x;
+  }
+
+  public function getY() {
+    return $this->y;
+  }
+
   public function __toString() {
     return sprintf('%d %d', $this->x, $this->y);
   }

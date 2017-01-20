@@ -41,7 +41,15 @@ class Command implements ICommand
       return false;
     }
 
-    return $this->actions[$this->cur++];
+    return $this->actions[$this->cur];
+  }
+
+  public function next() {
+    if (++$this->cur >= $this->action_length) {
+      return false;
+    }
+
+    return $this;
   }
 
   public function getLength() {
