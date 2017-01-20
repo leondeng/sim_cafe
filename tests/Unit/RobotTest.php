@@ -3,10 +3,6 @@
 namespace Simcafe\Tests\Unit;
 
 use Simcafe\Tests\Unit\TestCase;
-use Simcafe\Model\Robot;
-use Simcafe\Model\Coord;
-use Simcafe\Model\Direction;
-use Simcafe\Model\Command;
 
 class RobotTest extends TestCase
 {
