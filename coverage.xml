@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1484977797">
-  <project timestamp="1484977797">
+<coverage generated="1484980360">
+  <project timestamp="1484980360">
     <package name="Simcafe\Exception">
       <file name="/home/fan/dev/github/sim_cafe/src/Exception/CollisionException.php">
         <class name="CollisionException" namespace="Simcafe\Exception">

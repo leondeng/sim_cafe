@@ -24,6 +24,7 @@
         <directory suffix=".php">./src</directory>
         <exclude>
           <directory suffix=".php">./tests</directory>
+          <file>./src/app.php</file>
         </exclude>
       </whitelist>
     </filter>
