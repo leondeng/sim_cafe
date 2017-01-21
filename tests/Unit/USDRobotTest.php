@@ -75,13 +75,13 @@ class USDRobotTest extends TestCase
   public function test_move_north() {
     $robot = $this->getRobots()[2];
     $this->assertEquals(self::FIXTURES[2]['command'], (string) $robot->getCommand());
-    $this->assertEquals(self::FIXTURES[2]['steps'][0], (string) $robot->action());
+    $this->assertEquals(self::FIXTURES[2]['steps'][0], (string) $robot->act());
   }
 
   public function test_action_and_is_done() {
     foreach ($this->getRobots() as $index => $robot) {
       foreach (self::FIXTURES[$index]['steps'] as $step) {
-        $this->assertEquals($step, (string) $robot->action());
+        $this->assertEquals($step, (string) $robot->act());
       }
       $this->assertTrue($robot->isDone());
     }

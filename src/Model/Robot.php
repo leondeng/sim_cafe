@@ -27,7 +27,7 @@ class Robot implements IRobot
     return $this->command;
   }
 
-  public function action() {
+  public function act() {
     if ($this->done) {
       return $this;
     }
@@ -44,28 +44,37 @@ class Robot implements IRobot
         break;
     }
 
-    if (! $this->command->next()) {
+    if (!$this->command->next()) {
       $this->done = true;
     }
 
     return $this;
   }
 
-  protected function move() {
-    switch ((string) $this->direction) {
-      case Direction::NORTH:
-        $this->coord->incrementY();
-        break;
-      case Direction::EAST:
-        $this->coord->incrementX();
-        break;
-      case Direction::SOUTH:
-        $this->coord->decrementY();
-        break;
-      case Direction::WEST:
-        $this->coord->decrementX();
-        break;
+  private function move() {
+    $method = sprintf('move%s', Direction::DIRECTION_NAMES[(string) $this->direction]);
+
+    if (method_exists($this, $method)) {
+      $this->{$method}();
+    } else {
+      throw new \Exception("{$method} not existing on ".__CLASS__."!");
     }
+  }
+
+  protected function moveNorth() {
+    $this->coord->incrementY();
+  }
+
+  protected function moveEast() {
+    $this->coord->incrementX();
+  }
+
+  protected function moveSouth() {
+    $this->coord->decrementY();
+  }
+
+  protected function moveWest() {
+    $this->coord->decrementX();
   }
 
   public function isDone() {

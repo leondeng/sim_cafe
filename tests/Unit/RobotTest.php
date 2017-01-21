@@ -25,7 +25,7 @@ class RobotTest extends TestCase
   public function test_action_and_is_done() {
     foreach ($this->getRobots() as $index => $robot) {
       foreach (parent::FIXTURES[$index]['steps'] as $step) {
-        $this->assertEquals($step, (string) $robot->action());
+        $this->assertEquals($step, (string) $robot->act());
       }
       $this->assertTrue($robot->isDone());
     }
@@ -42,7 +42,7 @@ class RobotTest extends TestCase
     $command = new Command(self::NEGATIVE_FIXTURE['command']);
 
     $robot = new Robot($coord, $direction, $command);
-    $robot->action();
+    $robot->act();
   }
 
 }

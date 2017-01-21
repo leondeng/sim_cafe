@@ -15,7 +15,14 @@ class Direction implements IDirection
     self::NORTH => 1,
     self::EAST => 2,
     self::SOUTH => 3,
-    self::WEST => 4
+    self::WEST => 4,
+  ];
+
+  const DIRECTION_NAMES = [
+    self::NORTH => 'North',
+    self::EAST => 'East',
+    self::SOUTH => 'South',
+    self::WEST => 'West',
   ];
 
   private $direction;

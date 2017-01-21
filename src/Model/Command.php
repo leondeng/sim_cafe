@@ -31,7 +31,7 @@ class Command implements ICommand
   private function validateCommand() {
     $invalid_actions = array_diff(array_unique($this->actions), self::ACTIONS);
 
-    if (! empty($invalid_actions)) {
+    if (!empty($invalid_actions)) {
       throw new \UnexpectedValueException(sprintf('Invalid action(s): %s', implode(' ', $invalid_actions)));
     }
   }

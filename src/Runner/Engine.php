@@ -33,7 +33,7 @@ class Engine implements IEngine
   public function run() {
     while (!$this->isDone()) {
       foreach ($this->robots as $robot) {
-        $robot->action();
+        $robot->act();
         $this->overstepDetect();
         $this->collisionDetect();
       }
@@ -43,7 +43,7 @@ class Engine implements IEngine
   }
 
   public function isDone() {
-    return array_reduce($this->robots, function (bool $carry, IRobot $robot) {
+    return array_reduce($this->robots, function(bool $carry, IRobot $robot) {
       return $carry && $robot->isDone();
     }, true);
   }
@@ -58,7 +58,7 @@ class Engine implements IEngine
   }
 
   public function collisionDetect() {
-    $coords = array_map(function (IRobot $robot) {
+    $coords = array_map(function(IRobot $robot) {
       return (string) $robot->getCoord();
     }, $this->robots);
 
