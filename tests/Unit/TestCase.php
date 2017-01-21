@@ -48,6 +48,8 @@ class TestCase extends PHPUnit_Framework_TestCase
     ]
   ];
 
+  const RESULT = '1 3 N' . PHP_EOL . '3 5 W' . PHP_EOL;
+
   protected $robots = [];
 
   protected function getRobots() {

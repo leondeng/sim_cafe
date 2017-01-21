@@ -1,6 +1,6 @@
 <?php
 
-require_once(__DIR__.'/../vendor/autoload.php');
+require_once(__DIR__ . '/../vendor/autoload.php');
 
 use Simcafe\Model\Shop;
 use Simcafe\Model\USDRobot;
@@ -14,7 +14,7 @@ use Simcafe\Exception\OverstepException;
 
 $lines = array_map(function($line) {
   return rtrim($line);
-}, file(__DIR__.'/input.txt'));
+}, file(__DIR__ . '/input.txt'));
 
 $size = explode(' ', array_shift($lines));
 $shop = new Shop((int) $size[0], (int) $size[1]);
@@ -33,7 +33,7 @@ $engine = new Engine($shop, $robots);
 
 try {
   $engine->run();
-  $engine->result();
+  echo $engine->result();
 } catch (CollisionException $e) {
   echo 'Robot Collision Detected';
 } catch (OverstepException $e) {

@@ -68,9 +68,13 @@ class Engine implements IEngine
   }
 
   public function result() {
+    $result = '';
+
     foreach ($this->robots as $robot) {
-      echo (string) $robot . PHP_EOL;
+      $result .= (string) $robot . PHP_EOL;
     }
+
+    return $result;
   }
 
   public function getShop() {

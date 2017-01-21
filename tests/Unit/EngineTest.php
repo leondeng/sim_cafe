@@ -65,6 +65,8 @@ class EngineTest extends TestCase
     foreach ($engine->getRobots() as $index => $robot) {
       $this->assertEquals(parent::FIXTURES[$index]['final'], (string) $robot);
     }
+
+    $this->assertEquals(parent::RESULT, $engine->result());
   }
 
   /**
